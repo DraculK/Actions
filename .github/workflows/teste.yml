@@ -4,9 +4,9 @@ jobs:
   instala ruby:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: ruby/setup-ruby@v1
-	      with:
-	        ruby-version: 2.6  # escolhe a versão do ruby
-	        bundler-cache: true # bundle install
-	    - run: bundle exec rake
+        - uses: actions/checkout@v2
+        - uses: ruby/setup-ruby@v1
+            with:
+                ruby-version: 2.6  # escolhe a versão do ruby
+                bundler-cache: true # bundle install
+        - run: bundle exec rake
