@@ -1,15 +1,12 @@
-name: Ação teste #nome da nossa ação
-on: [push] #quando o código será executado, no nosso caso, no push.
-jobs: #aqui lista o que executaremos no push.
-  Teste: 
+name: ruby
+on: [push]
+jobs:
+  instala ruby:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 O trabalho foi executado automaticamente pelo ${{ github.event_name }}."
-      - run: echo "🐧 O trabalho está rodando no SO ${{ runner.os }} hospedado pelo servidor do GitHub!"
-      - run: echo "🔎 O nome da branch é ${{ github.ref }} e o repositório é ${{ github.repository }}."
-      - name: Ação de checkout
-        uses: actions/checkout@v2
-      - name: Arquivos do repositório
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 O status do trabalho é ${{ job.status }}."
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+	      with:
+	        ruby-version: 2.6  # escolhe a versão do ruby
+	        bundler-cache: true # bundle install
+	    - run: bundle exec rake
